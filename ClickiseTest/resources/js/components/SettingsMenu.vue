@@ -22,7 +22,7 @@
                 <div v-else class="input-group mb-3">
                     <input @input='password = $event.target.value'
                             ref="pasInput"
-                           type="email" class='form-control' placeholder="Введите новый пароль"
+                           type="password" class='form-control' placeholder="Введите новый пароль"
                            aria-label="Введите новый пароль" aria-describedby="button-addon2">
                     <button  class="btn btn-outline-secondary" type="button" id="button-addon2" @click="selectConfirm()">
                         Изменить
@@ -93,6 +93,7 @@ export default {
                 };
                 const response = await axios.post('/settings/changeSettings', data);
                 this.modalWindow = false
+                this.waitingCode = false
             } catch (err) {
                 this.error = 'Произошла ошибка: ' + err.message;
             }
