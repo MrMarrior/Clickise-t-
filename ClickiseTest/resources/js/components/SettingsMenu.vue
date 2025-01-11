@@ -4,14 +4,14 @@
             <div>
                 <div class="input-group mb-3">
                     <input ref="nameInput"  type="text" class="form-control" @input='userName = $event.target.value'
-                           v-bind:value="userName" placeholder="Recipient's username" aria-label="Recipient's username"
+                           v-bind:value="userName" placeholder="Введите имя" aria-label="Введите имя"
                            aria-describedby="button-addon2">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="selectConfirm()">Изменить</button>
                 </div>
                 <div class="input-group mb-3">
                     <input @input='userEmail = $event.target.value' v-bind:value="userEmail" ref="emailInput"
-                           type="email" class='form-control' placeholder="Recipient's username"
-                           aria-label="Recipient's username" aria-describedby="button-addon2">
+                           type="email" class='form-control' placeholder="Введил новый email"
+                           aria-label="Введил новый email" aria-describedby="button-addon2">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="changeEmail">
                         Изменить
                     </button>
@@ -23,7 +23,7 @@
                     <input @input='password = $event.target.value'
                             ref="pasInput"
                            type="email" class='form-control' placeholder="Введите новый пароль"
-                           aria-label="Recipient's username" aria-describedby="button-addon2">
+                           aria-label="Введите новый пароль" aria-describedby="button-addon2">
                     <button  class="btn btn-outline-secondary" type="button" id="button-addon2" @click="selectConfirm()">
                         Изменить
                     </button>
@@ -60,7 +60,7 @@ export default {
             isEditing: false,
             modalWindow: false,
             waitingCode: false,
-            emailPattern: /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/,
+            emailPattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
             settings: [
                 {title: 'Изменить имя'},
                 {title: 'Изменить пароль'},  // Массив значений, на потенциальное добавление новых пунктов настроек
@@ -107,7 +107,7 @@ export default {
         },
         selectConfirm(){
             if (this.emailPattern.test(this.userEmail)){
-           this.modalWindow = true
+            this.modalWindow = true
             }
             else{
                 this.$refs.emailInput.className = 'form-control is-invalid'
